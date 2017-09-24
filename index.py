@@ -12,8 +12,8 @@ output = dict()
 @app.route('/',methods=['GET', 'POST'])
 def hello_world():
     if request.method == 'POST':
-        # return request.data
-        body = request.data
-        x_value = np.array([float(body.weight),float(body.height)])
-        output["pred"] = model.predict(x_value)
+        print request.form['weight']
+        body = request.form
+        x_value = np.array([body['weight'],body['height']])
+        output["pred"] = model.predict(x_value)[0]
         return jsonify(output)
