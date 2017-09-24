@@ -14,6 +14,6 @@ def hello_world():
     if request.method == 'POST':
         print request.form['weight']
         body = request.form
-        x_value = np.array([body['weight'],body['height']])
+        x_value = np.array([[body['weight'],body['height']]])
         output["pred"] = model.predict(x_value)[0]
         return jsonify(output)
